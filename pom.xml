@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>amq.samples</groupId>
 	<artifactId>amq-sample-interceptor</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 	<name>amq-sample-interceptor</name>
 	<description>Simple sample interceptor to log messages to a specific file</description>
 

@@ -43,7 +43,8 @@ public class CustomLogInterceptor implements AmqpInterceptor {
             conn.getRemoteAddress(),
             conn.getProtocolName(),
             message.getStringProperty("_AMQ_ROUTE_TO"),
-            this.extractAllProps(message));
+            this.extractAllProps(message),
+            this.extractAllHeaders(packet));
         // @formatter:on        
         return true;
     }
@@ -65,6 +66,35 @@ public class CustomLogInterceptor implements AmqpInterceptor {
         return sb.toString();
     }
 
+    private String extractAllHeaders(final AMQPMessage message) {
+        if(message.getHeader() == null) {
+            return "";
+        }
+        
+        final StringBuffer sb = new StringBuffer();
+        
+        sb.append("deliveryCount=");
+        sb.append(message.getHeader().getDeliveryCount());
+        sb.append(", ");
+        
+        sb.append("durable=");
+        sb.append(message.getHeader().getDurable());
+        sb.append(", ");
+        
+        sb.append("firstAcquirer=");
+        sb.append(message.getHeader().getFirstAcquirer());
+        sb.append(", ");
+        
+        sb.append("priority=");
+        sb.append(message.getHeader().getPriority());
+        sb.append(", ");
+        
+        sb.append("ttl=");
+        sb.append(message.getHeader().getTtl());
+        
+        return sb.toString();
+    }
+    
     public static class NullableRemotingConnection implements RemotingConnection {
 
         @Override
