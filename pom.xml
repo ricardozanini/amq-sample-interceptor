@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>amq.samples</groupId>
+	<artifactId>amq-sample-interceptor</artifactId>
+	<version>0.0.2</version>
+	<name>amq-sample-interceptor</name>
+	<description>Simple sample interceptor to log messages to a specific file</description>
+
+	<properties>
+		<!-- 
+		AMQ 7.1: 2.4.0.amq-711002-redhat-1
+		AMQ 7.2: 2.6.1.amq-720004-redhat-1 
+		 -->
+		<amq.version>2.6.1.amq-720004-redhat-1</amq.version>
+		<java.version>1.8</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>artemis-amqp-protocol</artifactId>
+			<version>${amq.version}</version>
+		</dependency>
+
+		<dependency>	
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>artemis-stomp-protocol</artifactId>
+			<version>${amq.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>artemis-mqtt-protocol</artifactId>
+			<version>${amq.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>artemis-jms-client</artifactId>
+			<version>${amq.version}</version>
+		</dependency>
+
+
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+</project>
